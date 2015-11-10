@@ -31,6 +31,7 @@ Controller for the discover page
   //fired when we favourite / skip a song
   $scope.sendFeedback = function(bool){
 
+    //set variable for the correct animation sequence
     $scope.currentSong.rated = bool;
     $scope.currentSong.hide = true;
 
@@ -39,11 +40,11 @@ Controller for the discover page
 
       //set the song to one of our three songs
       var randomSong = Math.round(Math.random() * ($scope.songs.length - 1));
+
       //update current song in scope
       $scope.currentSong = angular.copy($scope.songs[randomSong]);
-      console.log("new song");
-    }, 250);
 
+    }, 250);
   };
 
 })
