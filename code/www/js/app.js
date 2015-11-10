@@ -15,7 +15,7 @@ angular.module('songhop', ['ionic', 'songhop.controllers'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-    
+
 
   });
 })
@@ -70,5 +70,5 @@ angular.module('songhop', ['ionic', 'songhop.controllers'])
   //url: 'http://localhost:3000'
 
   // Public Heroku server
-  url: 'https://ionic-songhop.herokuapp.com'
+  url: 'https://ionic-songhop.herokuapp.com/recommendations'
 });
