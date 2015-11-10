@@ -1,7 +1,6 @@
 <ion-view view-title="Discover" class="discover-page">
   <ion-content scroll="false">
 
-
     <div class="list card current-song"
       ng-class="{skipped: currentSong.rated == false,
                 favorited: currentSong.rated == true}"
@@ -29,6 +28,9 @@
 
     </div>
 
+    <div class="img-lookahead">
+      <img ng-src="{{ nextAlbumImg() }}" />
+    </div>
 
   </ion-content>
 </ion-view>
