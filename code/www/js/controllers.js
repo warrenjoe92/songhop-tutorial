@@ -2,6 +2,20 @@ angular.module('songhop.controllers', ['ionic', 'songhop.services'])
 
 
 /*
+Controller for the splash page
+*/
+.controller('SplashCtrl', function($scope, $state, User){
+  // attempt to signup/login via User.auth
+  $scope.submitForm = function(username, signingUp){
+    User.auth(username, signingUp).then(function(){ //success!
+      $state.go('tab.discover');
+    }, function(){ //error
+      alert('Hmm... try another username')
+    });
+  };
+})
+
+/*
 Controller for the discover page
 */
 .controller('DiscoverCtrl', function($scope, $timeout, User, Recommendations, $ionicLoading) {
