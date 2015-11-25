@@ -36,14 +36,18 @@ angular.module('songhop.services', ['ionic.utils'])
   o.checkSession = function(){
     var defer = $q.defer();
     if (o.session_id){
+      console.log('got username');
       // if this session is already initialized in the service
       defer.resolve(true);
+
     }
     else{
+      console.log('fetching username from localStorage')
       // detect if there's a session in localstorage from previous use.
       // if it is, pull into our service
       var user = $localstorage.getObject('user');
       if (user.username){
+        console.log('username found');
         //if there is a user, let's grab their favorites from the server
         o.setSession(user.username, user.session_id);
         o.populateFavorites().then(function(){
@@ -51,6 +55,7 @@ angular.module('songhop.services', ['ionic.utils'])
         });
       }
       else{
+        console.log('no username found');
         //no user info in localstorage, reject
         defer.resolve(false);
       }
@@ -96,12 +101,14 @@ angular.module('songhop.services', ['ionic.utils'])
   };
 
   o.populateFavorites = function(){
+    console.log('populating favorites');
     return $http({
       method: 'GET',
       url: SERVER.url + '/favorites',
       params: { session_id: o.session_id }
     }).success(function(data){
       // merge data into the queue
+      console.log('favorites', data)
       o.favorites = data;
     });
   };

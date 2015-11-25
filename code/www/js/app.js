@@ -50,10 +50,12 @@ angular.module('songhop', ['ionic', 'songhop.controllers'])
     // don't load the state until we've populated our User, if necessary.
     resolve: {
       populateSession: function(User) {
+        console.log('populating');
         return User.checkSession();//promise should be resolved before entering the state
       }//therefore favorites are populated before entering the state if user is logged in
     },
     onEnter: function($state, User){
+      console.log('entering tab state');
       User.checkSession().then(function(hasSession) {
         if (!hasSession) $state.go('splash');
       });
