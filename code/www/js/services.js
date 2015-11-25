@@ -19,15 +19,15 @@ angular.module('songhop.services', ['ionic.utils'])
       authRoute = 'login';
     }
     return $http.post(SERVER.url + '/' + authRoute, {username: username}).success(function(data){
-      o.setSession(data.username, data.session_id, data.favourites);
+      o.setSession(data.username, data.session_id, data.favorites);
     });
   };
 
   // Set session data
-  o.setSession = function(username, session_id, favourites) {
+  o.setSession = function(username, session_id, favorites) {
     if (username) o.username = username;
     if (session_id) o.session_id = session_id;
-    if (favourites) o.favourites = favourites;
+    if (favorites) o.favorites = favorites;
 
     // Set data in
     $localstorage.setObject('user', { username: username, session_id: session_id });
